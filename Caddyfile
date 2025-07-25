@@ -1,4 +1,4 @@
-http://localhost:81 {
+http://blueyondervc.cse3310.org {
     # Serve static files from staticfiles directory
     handle /static/* {
         root * /srv/
@@ -8,5 +8,8 @@ http://localhost:81 {
     # Proxy all other requests to Gunicorn
     handle {
         reverse_proxy http://django-todo-app:8000
+    }
+log {
+        output stdout
     }
 }

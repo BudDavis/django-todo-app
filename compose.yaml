@@ -11,7 +11,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - pg_data:/var/lib/postgresql/data:Z
+      - pg_data:/var/lib/postgresql/data
 
   web:
     build: .
@@ -38,10 +38,10 @@ services:
     image: caddy:alpine
     container_name: django-todo-caddy
     ports:
-      - 81:81
+      - 80:80
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:Z
-      - ./staticfiles:/srv/static:Z
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./staticfiles:/srv/static
     depends_on:
       - web
 
